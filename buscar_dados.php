@@ -1,4 +1,6 @@
 <?php
+require_once "nivel_detritos.php";
+
 // Configurações do banco de dados MySQL
 $mysqlHostname = 'mysql3.serv00.com'; // Hostname do servidor MySQL
 $mysqlUsername = 'm2486_Kblo'; // Nome de usuário do MySQL
@@ -41,16 +43,18 @@ if ($result_combinado->num_rows > 0) {
         // Calcular o nível de detritos
         $nivel_detritos = '';
 
-        // Converter a distância para percentual
+        // // Converter a distância para percentual
         $percentual = (50 - $row['distancia']) / 20 * 100;
 
-        if ($percentual > 75) { // Quanto maior a porcentagem, mais cheio está
-            $nivel_detritos = 'Vazio';
-        } elseif ($percentual >= 40 && $percentual <= 75) {
-            $nivel_detritos = 'Precisa de Atenção';
-        } elseif ($percentual < 40) {
-            $nivel_detritos = 'Entupido';
-        }
+        // if ($percentual > 75) { // Quanto maior a porcentagem, mais cheio está
+        //     $nivel_detritos = 'Vazio';
+        // } elseif ($percentual >= 40 && $percentual <= 75) {
+        //     $nivel_detritos = 'Precisa de Atenção';
+        // } elseif ($percentual < 40) {
+        //     $nivel_detritos = 'Entupido';
+        // }
+
+        $nivel_detritos = obterNivelDetritos($percentual);
 
         // Adicionar os dados e o nível de detritos ao array de resultados
         $row['nivel_detritos'] = $nivel_detritos;
