@@ -24,7 +24,7 @@ class DatabaseTest extends TestCase
 
     public function testNivelDetritosEntupido()
     {
-        $resultado = obterNivelDetritos(41);
+        $resultado = obterNivelDetritos(39);
         $esperado = 'Entupido';
 
         $this->assertEquals($esperado, $resultado);
