@@ -1,0 +1,22 @@
+name: Test php Buerotech
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixando repositório
+        uses: actions/checkout@v2
+
+      - name: Configurando PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Instalando dependência
+        run: composer install
+
+      - name: Executando testes
+        run: vendor/bin/phpunit
