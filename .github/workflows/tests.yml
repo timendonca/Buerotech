@@ -20,3 +20,14 @@ jobs:
 
       - name: Executando testes
         run: vendor/bin/phpunit
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: success()
+    
+    steps:
+      - name: Enviando para servidor
+        run: echo "Enviando ..."
+      
+      - name: Verificação de conclusão
+        run: echo "Deploy realizado com sucesso"
